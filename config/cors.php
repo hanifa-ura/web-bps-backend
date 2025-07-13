@@ -3,7 +3,7 @@
 return [
     'paths' => ['api/*'],
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:5173', 'https://web-bps-frontend-eight.vercel.app'],
+    'allowed_origins' => ['http://localhost:5173', 'https://web-bps-frontend-2.vercel.app'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
 
