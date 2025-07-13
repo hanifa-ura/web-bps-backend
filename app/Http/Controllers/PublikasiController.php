@@ -25,12 +25,22 @@ class PublikasiController extends Controller
 
     public function show($id)
     {
-        return Publikasi::findOrFail($id);
+        $publikasi = Publikasi::find($id);
+
+        if (!$publikasi) {
+            return response()->json(['message' => 'Publikasi tidak ditemukan'], 404);
+        }
+
+        return response()->json($publikasi);
     }
 
     public function update(Request $request, $id)
     {
-        $publikasi = Publikasi::findOrFail($id);
+        $publikasi = Publikasi::find($id);
+
+        if (!$publikasi) {
+            return response()->json(['message' => 'Publikasi tidak ditemukan'], 404);
+        }
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'releaseDate' => 'required|date',
@@ -43,9 +53,14 @@ class PublikasiController extends Controller
 
     public function destroy($id)
     {
-        $publikasi = Publikasi::findOrFail($id);
+        $publikasi = Publikasi::find($id);
+
+        if (!$publikasi) {
+            return response()->json(['message' => 'Publikasi tidak ditemukan'], 404);
+        }
+
         $publikasi->delete();
-        return response()->json(['message' => 'Data dihapus']);
+        return response()->json(['message' => 'Publikasi berhasil dihapus']);
     }
 
 }
